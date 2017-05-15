@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{6A2DD598-6A84-43B6-8FDF-76676B41813E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity_Console", "Unity_Console\Unity_Console.csproj", "{404DEDC1-1654-4C79-978B-0AFD85059C24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6A2DD598-6A84-43B6-8FDF-76676B41813E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A2DD598-6A84-43B6-8FDF-76676B41813E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A2DD598-6A84-43B6-8FDF-76676B41813E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{404DEDC1-1654-4C79-978B-0AFD85059C24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{404DEDC1-1654-4C79-978B-0AFD85059C24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{404DEDC1-1654-4C79-978B-0AFD85059C24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{404DEDC1-1654-4C79-978B-0AFD85059C24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

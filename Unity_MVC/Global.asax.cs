@@ -1,5 +1,7 @@
 ﻿using Microsoft.Practices.Unity;
 using Repository;
+using Repository.ImplRepositories;
+using Repository.IRepositories;
 using Service;
 using Service.ImplServices;
 using Service.IServices;
@@ -13,6 +15,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Unity_MVC.App_Start;
+using Unity_MVC.Entity;
 using Unity_MVC.UnityIoc;
 
 namespace Unity_MVC
@@ -32,12 +35,19 @@ namespace Unity_MVC
             unityContainer.RegisterType<I_t_Case_Main_Service, t_Case_Main_Service>();
             unityContainer.RegisterType<I_T_CaseClient_Service, T_CaseClient_Service>();
 
-            UnityConfig.ServiceUnityConfigRegister(unityContainer);
+            unityContainer.RegisterType(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            unityContainer.RegisterType<I_t_Case_Main_Repositoy, t_Case_Main_Repositoy>();
+            unityContainer.RegisterType<I_T_CaseClient_Repository, T_CaseClient_Repository>();
+
+            //UnityConfig.ServiceUnityConfigRegister(unityContainer);
 
             UnityControllerFactory controllerFactory = new UnityControllerFactory(unityContainer);
 
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
             GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerActivator), new UnityHttpControllerActivator(unityContainer));
+
+
+            
 
         }
     }
