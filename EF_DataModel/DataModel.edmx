@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EF_DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_Case_Main">
+          <Key>
+            <PropertyRef Name="RootId" />
+          </Key>
+          <Property Name="RootId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyNum" Type="varchar" MaxLength="100" />
+          <Property Name="BranchNum" Type="varchar" MaxLength="100" />
+          <Property Name="CaseNum" Type="varchar" MaxLength="100" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="SerialNum" Type="varchar" MaxLength="50" />
+          <Property Name="OrgName" Type="varchar" MaxLength="50" />
+          <Property Name="FullAddress" Type="varchar" MaxLength="500" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="ChangeDate" Type="datetime" />
+          <Property Name="FinishDate" Type="datetime" />
+          <Property Name="CaseFlag" Type="int" />
+          <Property Name="recording_time" Type="datetime" />
+          <Property Name="updated_time" Type="datetime" />
+          <Property Name="PropertyName" Type="varchar" MaxLength="100" />
+          <Property Name="OrgId" Type="varchar" MaxLength="20" />
+          <Property Name="UserId" Type="varchar" MaxLength="50" />
+          <Property Name="CommissionDate" Type="datetime" />
+          <Property Name="RecordNum" Type="varchar" MaxLength="100" />
+          <Property Name="NewProperty" Type="varchar" MaxLength="50" />
+          <Property Name="NewAnJieMoney" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="NPDateTime" Type="datetime" />
+          <Property Name="IsFromFirst" Type="int" Nullable="false" />
+          <Property Name="isGSP" Type="int" />
+          <Property Name="ExchangeType" Type="varchar" MaxLength="50" />
+          <Property Name="IsNewHome" Type="int" />
+          <Property Name="MainUser_Name" Type="varchar" MaxLength="100" />
+          <Property Name="MainUser_ID" Type="varchar" MaxLength="100" />
+          <Property Name="MainUser_Code" Type="varchar" MaxLength="100" />
+          <Property Name="MainOrg_Name" Type="varchar" MaxLength="100" />
+          <Property Name="MainOrg_ID" Type="varchar" MaxLength="100" />
+          <Property Name="MainOrg_Code" Type="varchar" MaxLength="100" />
+          <Property Name="SourceFlag" Type="varchar" MaxLength="50" />
+          <Property Name="Delegation_Code" Type="varchar" MaxLength="100" />
+          <Property Name="IsSpecialCase" Type="varchar" MaxLength="10" />
+          <Property Name="OrgIdA" Type="varchar" MaxLength="100" />
+          <Property Name="EarnestDate" Type="datetime" />
+          <Property Name="ContractDate" Type="datetime" />
+          <Property Name="BUSISH_ID" Type="varchar" MaxLength="50" />
+          <Property Name="BUSIAR_ID" Type="varchar" MaxLength="50" />
+          <Property Name="BUSISWZ_ID" Type="varchar" MaxLength="50" />
+          <Property Name="BUSIWZ_ID" Type="varchar" MaxLength="50" />
+          <Property Name="BUSIBA_ID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“CTMMIS.dbo.T_CaseClient”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="T_CaseClient">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RootID" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RootID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ctm_code" Type="varchar" MaxLength="20" />
+          <Property Name="cust_code" Type="nvarchar" MaxLength="100" />
+          <Property Name="cust_position" Type="nvarchar" MaxLength="100" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="mobile" Type="nvarchar" MaxLength="100" />
+          <Property Name="cert_type" Type="nvarchar" MaxLength="100" />
+          <Property Name="cert_code" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="EF_DataModelStoreContainer">
+          <EntitySet Name="t_Case_Main" EntityType="Self.t_Case_Main" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_CaseClient" EntityType="Self.T_CaseClient" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [T_CaseClient].[Id] AS [Id], 
+    [T_CaseClient].[RootID] AS [RootID], 
+    [T_CaseClient].[ctm_code] AS [ctm_code], 
+    [T_CaseClient].[cust_code] AS [cust_code], 
+    [T_CaseClient].[cust_position] AS [cust_position], 
+    [T_CaseClient].[name] AS [name], 
+    [T_CaseClient].[mobile] AS [mobile], 
+    [T_CaseClient].[cert_type] AS [cert_type], 
+    [T_CaseClient].[cert_code] AS [cert_code]
+    FROM [dbo].[T_CaseClient] AS [T_CaseClient]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EF_DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="t_Case_Main">
+          <Key>
+            <PropertyRef Name="RootId" />
+          </Key>
+          <Property Name="RootId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BranchNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CaseNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SerialNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrgName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FullAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="ChangeDate" Type="DateTime" Precision="3" />
+          <Property Name="FinishDate" Type="DateTime" Precision="3" />
+          <Property Name="CaseFlag" Type="Int32" />
+          <Property Name="recording_time" Type="DateTime" Precision="3" />
+          <Property Name="updated_time" Type="DateTime" Precision="3" />
+          <Property Name="PropertyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OrgId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CommissionDate" Type="DateTime" Precision="3" />
+          <Property Name="RecordNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NewProperty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NewAnJieMoney" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="NPDateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsFromFirst" Type="Int32" Nullable="false" />
+          <Property Name="isGSP" Type="Int32" />
+          <Property Name="ExchangeType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsNewHome" Type="Int32" />
+          <Property Name="MainUser_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MainUser_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MainUser_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MainOrg_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MainOrg_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MainOrg_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SourceFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Delegation_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsSpecialCase" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="OrgIdA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EarnestDate" Type="DateTime" Precision="3" />
+          <Property Name="ContractDate" Type="DateTime" Precision="3" />
+          <Property Name="BUSISH_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BUSIAR_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BUSISWZ_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BUSIWZ_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BUSIBA_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_CaseClient">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RootID" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RootID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ctm_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cust_code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cust_position" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="mobile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cert_type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cert_code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DataModelContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_Case_Main" EntityType="Self.t_Case_Main" />
+          <EntitySet Name="T_CaseClient" EntityType="Self.T_CaseClient" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EF_DataModelStoreContainer" CdmEntityContainer="DataModelContext">
+          <EntitySetMapping Name="t_Case_Main">
+            <EntityTypeMapping TypeName="EF_DataModel.t_Case_Main">
+              <MappingFragment StoreEntitySet="t_Case_Main">
+                <ScalarProperty Name="RootId" ColumnName="RootId" />
+                <ScalarProperty Name="CompanyNum" ColumnName="CompanyNum" />
+                <ScalarProperty Name="BranchNum" ColumnName="BranchNum" />
+                <ScalarProperty Name="CaseNum" ColumnName="CaseNum" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+                <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+                <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+                <ScalarProperty Name="FinishDate" ColumnName="FinishDate" />
+                <ScalarProperty Name="CaseFlag" ColumnName="CaseFlag" />
+                <ScalarProperty Name="recording_time" ColumnName="recording_time" />
+                <ScalarProperty Name="updated_time" ColumnName="updated_time" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CommissionDate" ColumnName="CommissionDate" />
+                <ScalarProperty Name="RecordNum" ColumnName="RecordNum" />
+                <ScalarProperty Name="NewProperty" ColumnName="NewProperty" />
+                <ScalarProperty Name="NewAnJieMoney" ColumnName="NewAnJieMoney" />
+                <ScalarProperty Name="NPDateTime" ColumnName="NPDateTime" />
+                <ScalarProperty Name="IsFromFirst" ColumnName="IsFromFirst" />
+                <ScalarProperty Name="isGSP" ColumnName="isGSP" />
+                <ScalarProperty Name="ExchangeType" ColumnName="ExchangeType" />
+                <ScalarProperty Name="IsNewHome" ColumnName="IsNewHome" />
+                <ScalarProperty Name="MainUser_Name" ColumnName="MainUser_Name" />
+                <ScalarProperty Name="MainUser_ID" ColumnName="MainUser_ID" />
+                <ScalarProperty Name="MainUser_Code" ColumnName="MainUser_Code" />
+                <ScalarProperty Name="MainOrg_Name" ColumnName="MainOrg_Name" />
+                <ScalarProperty Name="MainOrg_ID" ColumnName="MainOrg_ID" />
+                <ScalarProperty Name="MainOrg_Code" ColumnName="MainOrg_Code" />
+                <ScalarProperty Name="SourceFlag" ColumnName="SourceFlag" />
+                <ScalarProperty Name="Delegation_Code" ColumnName="Delegation_Code" />
+                <ScalarProperty Name="IsSpecialCase" ColumnName="IsSpecialCase" />
+                <ScalarProperty Name="OrgIdA" ColumnName="OrgIdA" />
+                <ScalarProperty Name="EarnestDate" ColumnName="EarnestDate" />
+                <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
+                <ScalarProperty Name="BUSISH_ID" ColumnName="BUSISH_ID" />
+                <ScalarProperty Name="BUSIAR_ID" ColumnName="BUSIAR_ID" />
+                <ScalarProperty Name="BUSISWZ_ID" ColumnName="BUSISWZ_ID" />
+                <ScalarProperty Name="BUSIWZ_ID" ColumnName="BUSIWZ_ID" />
+                <ScalarProperty Name="BUSIBA_ID" ColumnName="BUSIBA_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_CaseClient">
+            <EntityTypeMapping TypeName="EF_DataModel.T_CaseClient">
+              <MappingFragment StoreEntitySet="T_CaseClient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RootID" ColumnName="RootID" />
+                <ScalarProperty Name="ctm_code" ColumnName="ctm_code" />
+                <ScalarProperty Name="cust_code" ColumnName="cust_code" />
+                <ScalarProperty Name="cust_position" ColumnName="cust_position" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="cert_type" ColumnName="cert_type" />
+                <ScalarProperty Name="cert_code" ColumnName="cert_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
